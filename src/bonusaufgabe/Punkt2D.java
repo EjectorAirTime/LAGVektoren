@@ -65,3 +65,4 @@ public class Punkt2D {
 		return "( " + this.x + " , " + this.y + " )";
  	}
 }
+

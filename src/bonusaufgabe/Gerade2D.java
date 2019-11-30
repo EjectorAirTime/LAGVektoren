@@ -116,13 +116,13 @@ public class Gerade2D {
 	public double distOrientated(Punkt2D x) {
 		return (Vektor2D.SkalarProdukt(new Vektor2D(this.p, x), this.getNormale()))/Vektor2D.dist((this.getNormale()));
 	}
-	public Punkt2D berechneSchnittpunkt(Gerade2D g) throws Exception {
+	public Punkt2D berechneSchnittpunkt(Gerade2D g) {
 		return berechneSchnittpunkt(this, g);
 	}
 	
 	
 	// Klassenmethoden
-	public static Punkt2D berechneSchnittpunkt(Gerade2D g, Gerade2D h) throws Exception{
+	public static Punkt2D berechneSchnittpunkt(Gerade2D g, Gerade2D h) {
 		double test1;
 		test1 = g.v.getX() / h.v.getX();
 		double test2;
@@ -131,7 +131,8 @@ public class Gerade2D {
 		
 		if (Math.abs(g.v.getY()- test1* h.v.getY()) < EPSILON
 				|| Math.abs(g.v.getX()- test2* h.v.getX()) < EPSILON ) {
-			throw new Exception("Linear abhängig. Es gibt keinen echten Schnittpunkt!");
+			System.out.println("Linear abhängig. Es gibt keinen echten Schnittpunkt!");
+			return new Punkt2D();
 		}
 		else {
 			System.out.println("Linear unabhängig");

@@ -138,7 +138,6 @@ public class Vektor3D {
 		return (a<0?-a:a);
 	}
 	
-	
 	// ToStringMethode
 	public String toString() {
 		return "( " + this.x + " , " + this.y + " , " + this.z +" )";

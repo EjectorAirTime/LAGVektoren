@@ -56,11 +56,13 @@ public class Ebene3D {
 	
 	
 	// Konstruktoren
-	public Ebene3D() throws Exception {
+	public Ebene3D() {
 		this(new Punkt3D(), new Vektor3D(), new Vektor3D());
 	}
-	public Ebene3D(Punkt3D auf, Vektor3D r1, Vektor3D r2) throws Exception {
-		if (!r1.LinearAbh√§ngig(r2)) {
+	public Ebene3D(Punkt3D auf, Vektor3D r1, Vektor3D r2){
+		if (r1.LinearAbh‰ngig(r2)) {
+			System.out.println("Richtungsvektoren sind linear abh‰ngig!");
+			}
 		this.p = auf;
 		this.u = r1;
 		this.v = r2;
@@ -69,11 +71,8 @@ public class Ebene3D {
 		this.c = u.getX() * v.getY() - u.getY()*v.getX();
 		this.d = -(this.a*p.getX()+ this.b*p.getY() + this.c*p.getZ() );
 		this.normale = new Vektor3D(this.a, this.b, this.c);
-		}
-		else	
-			throw new Exception("Richtungsvektoren sind linear abh√§ngig!");
 	}
-	public Ebene3D(Punkt3D P1, Punkt3D P2, Punkt3D P3) throws Exception {
+	public Ebene3D(Punkt3D P1, Punkt3D P2, Punkt3D P3)  {
 		this(P1,new Vektor3D(P1,P2), new Vektor3D(P1, P3));
 	}
 	public Ebene3D(Ebene3D copy) {
@@ -109,7 +108,7 @@ public class Ebene3D {
 	
 	
 	// Objektmethoden
-	public Gerade3D berechneSchnittGerade(Ebene3D f)  throws Exception{
+	public Gerade3D berechneSchnittGerade(Ebene3D f) {
 		return berechneSchnittGerade(this, f);
 	}
 	public double getDist_p(Punkt3D t) {
@@ -134,12 +133,12 @@ public class Ebene3D {
 		Vektor3D b = new Vektor3D (f.a,f.b,f.c);
 		return Vektor3D.berechneWinkel(a,b);
 	}
-	public static Gerade3D berechneSchnittGerade(Ebene3D e,Ebene3D f) throws Exception {
+	public static Gerade3D berechneSchnittGerade(Ebene3D e, Ebene3D f) {
 		
-		if(e.normale.LinearAbh√§ngig(Vektor3D.VektorProdukt(f.u, f.v))) {
+		if(e.normale.LinearAbh‰ngig(Vektor3D.VektorProdukt(f.u, f.v))) {
 			if (e.pruefePunkt(f.p) || f.pruefePunkt(e.p))
-				throw new Exception("Ebenen sind gleich");
-			throw new Exception("Ebenen sind parallel !");
+				System.out.println("Ebenen sind gleich");
+			System.out.println("Ebenen sind parallel !");
 		}
 		/* x = f.p.getX() + r*e.v.getX() + s*e.u.getX()
 		 * y = f.p.getY() + r*e.v.getY() + s*e.u.getY()

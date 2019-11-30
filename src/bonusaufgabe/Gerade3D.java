@@ -51,19 +51,21 @@ public class Gerade3D {
 	public double distOrientated(Punkt3D x) {
 		return Vektor3D.SkalarProdukt(new Vektor3D(this.p, x), this.getNormale())/Vektor3D.dist((this.getNormale()));
 	}
-	public Punkt3D berechneSchnittpunkt(Gerade3D g) throws Exception {
+	public Punkt3D berechneSchnittpunkt(Gerade3D g) {
 		return berechneSchnittpunkt(this, g);
 	}
 	
 	
 	// Klassenemthoden
-	public static Punkt3D berechneSchnittpunkt(Gerade3D g, Gerade3D h) throws Exception {
+	public static Punkt3D berechneSchnittpunkt(Gerade3D g, Gerade3D h) {
 		if (Vektor3D.LinearAbhängig(g.v, h.v)) {
-			if (g.PunktAufGerade(h.p)) {
-				throw new Exception("Die Geraden sind identisch! ");
-			}
-			throw new Exception("Linear abhängig! Parallele Geraden");
+			
+			System.out.println("Linear abhängig! Parallele Geraden");
 		}
+		else if (g.PunktAufGerade(h.p)) {
+			System.out.println("Die Geraden sind identisch!");
+		}
+		
 		/*	|  g.p + s* g.v = h.p + r* h.v  	|
 		 * 	
 		 *	| g.p.x + r*g.v.x = h.p.x +s*h.v.x	|
@@ -80,18 +82,16 @@ public class Gerade3D {
 		Punkt3D schnitt = new Punkt3D(	g.p.getX()+r*g.v.getX(),
 										g.p.getY()+r*g.v.getY(),
 										g.p.getZ()+r*g.v.getZ());
-		return schnitt;
-		
-		
+		return schnitt;		
 	}
+	
+	//Hilfsmethoden zum LGS lösen
 	private static double solveLGS(double[][] lgs) {
 		// Source: https://www.virtual-maxim.de/losen-linearer-gleichungssysteme-mit-gaus-jordan-algorithmus/
 		printLGS(lgs);
 		// Nutze alle 3 Zeilen bei 2 Unbekanten
-	
 		if (Math.abs(lgs[0][0])< EPSILON && Math.abs(lgs[1][0]) > EPSILON) {
 			ChangeRow(lgs, 2, 1);
-			// Wechsle Zeile falls erste Zeile, erste Spalte != 0 ist
 		}
 		multiplyRow(lgs, 1, lgs[0][0]);
 		multiplyRow(lgs, 2, lgs[1][0]/lgs[0][0]);

@@ -4,7 +4,7 @@ package bonusaufgabe;
  * @author Jan Fenau
  */
 public class Aufgabe3Test {
-	public static void main(String[] args) throws Exception {			
+	public static void main(String[] args) {			
 			//Ebene3D Test:
 			Ebene3D allgemein = new Ebene3D();				//Standardkonstruktor mit Nullvektoren und Ursprung
 			System.out.println(allgemein);					//Ausgabe in impliziter und expliziter Darstellung

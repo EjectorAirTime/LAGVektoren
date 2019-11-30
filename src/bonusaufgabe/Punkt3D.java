@@ -65,6 +65,7 @@ public class Punkt3D {
 		}
 		
 		
+		
 		// ToString Methode
 		public String toString() {
 			return "( " + this.x + " , " + this.y + " , " + this.z + " )";
