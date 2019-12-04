@@ -106,7 +106,7 @@ public class Vektor3D {
 		return a.x*b.x+a.y*b.y+ a.z*b.z;
 	}
 	public static Vektor3D  addiere(Vektor3D a, Vektor3D b) {
-		return new Vektor3D(a.x+b.x, a.y+b.y,a.z*b.z);
+		return new Vektor3D(a.x+b.x, a.y+b.y,a.z+b.z);
 	}
 	public static Vektor3D VektorProdukt(Vektor3D u, Vektor3D v) {
 		return new Vektor3D(u.y*v.z-u.z*v.y, u.z*v.x-u.x*v.z, u.x * v.y - u.y * v.x);
